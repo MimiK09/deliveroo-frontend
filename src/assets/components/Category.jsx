@@ -1,11 +1,14 @@
-const Category = (props) => {
-    console.log(props)
 
-    return (<div className="categorie-master" key={id}>
-    <h2>{element.name}</h2>
+
+const Category = (props) => {
+    // console.log("props",props)
+    // console.log("props2",props.element.name)
+
+    return (<div className="categorie-master">
+    <h2>{props.element.name}</h2>
     <div className="line-meals">
-        {element.meals.map((element) => {
-            console.log("element2", element);
+        {props.element.meals.map((element) => {
+            // console.log("element2", element);
             return (
                 <div className="meal" key={element.id}>
                     <div className="meal-description">
@@ -29,7 +32,7 @@ const Category = (props) => {
                     </div>
                     {element.picture ? (
                         <div className="meal-picture">
-                            <img src={element.picture} alt="photo repas" />
+                            <img src={element.picture} alt="repas" />
                         </div>
                     ) : (
                         ""
