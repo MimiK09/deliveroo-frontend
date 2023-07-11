@@ -1,7 +1,7 @@
 import "./App.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
-import Category from "./assets/components/Category";
+import Restaurant from "./assets/components/Restaurant";
 // import { nanoid } from "nanoid";
 // import { library } from '@fortawesome/fontawesome-svg-core';
 // import { faEnvelope, faKey, faListAlt } from '@fortawesome/free-solid-svg-icons';
@@ -24,7 +24,7 @@ function App() {
 			}
 		};
 		fetchData();
-	}, []);
+	},[]);
 
 	return isLoading ? (
 		<span>En cours de chargement... </span>
@@ -36,30 +36,7 @@ function App() {
 				</div>
 			</header>
 			<main>
-				<div className="description">
-					<div className="container">
-						<div className="restaurant-description">
-							<h1>{data.restaurant.name}</h1>
-							<p>{data.restaurant.description}</p>
-						</div>
-						<div className="restaurant-image">
-							<img src={data.restaurant.picture} alt="restaurant" />
-						</div>
-					</div>
-				</div>
-				<div className="bloc-container">
-					<div className="menu">
-						{data.categories.map((element) => {
-							console.log("element1", element.meals);
-							const id = element.name;
-							return ( <Category element={element} key={id}/>
-							);
-						})}
-					</div>
-					<div className="cart">
-						<p>Panier</p>
-					</div>
-				</div>
+				<Restaurant data={data} />
 			</main>
 		</>
 	);
