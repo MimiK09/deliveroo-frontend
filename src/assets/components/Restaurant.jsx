@@ -19,7 +19,6 @@ const Restaurant = (props) => {
 			<div className="bloc-container">
 				<div className="menu">
 					{data.categories.map((element) => {
-						// console.log("element1", element.meals);
 						const id = element.name;
 						return <Category element={element} key={id} />;
 					})}
