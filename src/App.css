@@ -125,6 +125,7 @@ header .container img {
 	display: flex;
 	justify-content: space-between;
 	margin: 0px auto;
+	gap:20px;
 }
 
 /****************/
@@ -145,7 +146,7 @@ header .container img {
 .line-meals {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 10px;
+	gap: 20px;
 }
 
 /****************/
