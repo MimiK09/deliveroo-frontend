@@ -1,8 +1,12 @@
 import Category from "./Category";
 
+
 const Restaurant = (props) => {
-	const { data } = props;
-	console.log("restau", props);
+	const { data, categoriesList } = props;
+	// console.log("restau", data);
+	// console.log("cat", categoriesList);
+
+
 	return (
 		<>
 			<div className="description">
@@ -18,7 +22,7 @@ const Restaurant = (props) => {
 			</div>
 			<div className="bloc-container">
 				<div className="menu">
-					{data.categories.map((element) => {
+					{categoriesList.map((element) => {
 						const id = element.name;
 						return <Category element={element} key={id} />;
 					})}

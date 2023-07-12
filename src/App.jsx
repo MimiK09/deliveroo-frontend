@@ -2,29 +2,34 @@ import "./App.css";
 import axios from "axios";
 import { useState, useEffect } from "react";
 import Restaurant from "./assets/components/Restaurant";
-// import { nanoid } from "nanoid";
-// import { library } from '@fortawesome/fontawesome-svg-core';
-// import { faEnvelope, faKey, faListAlt } from '@fortawesome/free-solid-svg-icons';
-// library.add(faEnvelope, faKey, faListAlt);
 
 function App() {
 	const [data, setData] = useState();
 	const [isLoading, setIsLoading] = useState(true);
+	const [categoriesList, setCategoriesList] = useState([]);
 
 	useEffect(() => {
 		const fetchData = async () => {
 			try {
-				const response = await axios.get("https://site--deliveroo-backend--d4x522rwzwfd.code.run/");
-				console.log("avant", response.data);
+				const response = await axios.get(
+					"https://site--deliveroo-backend--d4x522rwzwfd.code.run/"
+				);
+
 				setData(response.data);
-				console.log("post set data", data);
+
 				setIsLoading(false);
+				setCategoriesList(
+					data.categories.filter((cat) => cat.meals.length > 0)
+				);
 			} catch (error) {
 				console.log(error.response);
 			}
 		};
 		fetchData();
-	}, []);
+	}, [data.categories]);
+
+	console.log("data",data);
+	console.log("cat", data.categories)
 
 	return isLoading ? (
 		<span>En cours de chargement... </span>
@@ -36,7 +41,7 @@ function App() {
 				</div>
 			</header>
 			<main>
-				<Restaurant data={data} />
+				<Restaurant data={data} categoriesList={categoriesList} />
 			</main>
 		</>
 	);
