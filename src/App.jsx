@@ -14,7 +14,6 @@ function App() {
 				const response = await axios.get(
 					"https://site--deliveroo-backend--d4x522rwzwfd.code.run/"
 				);
-
 				setData(response.data);
 
 				setIsLoading(false);
@@ -26,10 +25,10 @@ function App() {
 			}
 		};
 		fetchData();
-	}, [data.categories]);
+	}, []);
 
-	console.log("data",data);
-	console.log("cat", data.categories)
+	// console.log("data",data);
+	// console.log("cat", data.categories)
 
 	return isLoading ? (
 		<span>En cours de chargement... </span>
