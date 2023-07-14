@@ -150,7 +150,7 @@ header .container img {
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
-	background-color: #ffffff;
+	background-color: #9f1111;
 	border-radius: 5px;
 	min-width: 300px;
 	padding: 10px;
@@ -158,6 +158,10 @@ header .container img {
 	height: 160px;
 	flex: 1 1;
   gap : 5px
+}
+
+.meal:hover{
+	box-shadow: 0 22px 24px 0 rgba(46,51,51,.07);
 }
 
 .meal-description {

@@ -1,11 +1,9 @@
 import Category from "./Category";
+import Cart from "./Cart";
 
 
 const Restaurant = (props) => {
-	const { data, categoriesList } = props;
-	// console.log("restau", data);
-	// console.log("cat", categoriesList);
-
+	const { cart, setCart, data, categoriesList } = props;
 
 	return (
 		<>
@@ -24,12 +22,10 @@ const Restaurant = (props) => {
 				<div className="menu">
 					{categoriesList.map((element) => {
 						const id = element.name;
-						return <Category element={element} key={id} />;
+						return <Category element={element} key={id} cart={cart} setCart={setCart}/>;
 					})}
 				</div>
-				<div className="cart">
-					<p>Panier</p>
-				</div>
+				<Cart cart={cart} setCart={setCart}/>
 			</div>
 		</>
 	);

@@ -1,7 +1,20 @@
 const Meal = (props) => {
-	const { element } = props;
+	const { element, cart, setCart } = props;
+
+	const addMeal = () => {
+		const newCart = [...cart];
+		let obj = {};
+		obj.name = element.title;
+		obj.quantity = 1;
+		obj.price = element.price;
+		console.log("test", obj);
+		newCart.push(obj);
+		setCart(newCart);
+	};
+	console.log("cart", cart);
+
 	return (
-		<div className="meal">
+		<div className="meal" onClick={addMeal}>
 			<div className="meal-description">
 				<h3>{element.title}</h3>
 				<div className="meal-detail">

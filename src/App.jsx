@@ -4,27 +4,28 @@ import { useState, useEffect } from "react";
 import Restaurant from "./assets/components/Restaurant";
 
 function App() {
+	const [cart, setCart] = useState([]);
 	const [data, setData] = useState();
 	const [isLoading, setIsLoading] = useState(true);
 	const [categoriesList, setCategoriesList] = useState([]);
 
-	useEffect(() => {
+	
 		const fetchData = async () => {
 			try {
 				const response = await axios.get(
 					"https://site--deliveroo-backend--d4x522rwzwfd.code.run/"
 				);
 				setData(response.data);
-
-				setIsLoading(false);
 				setCategoriesList(
 					data.categories.filter((cat) => cat.meals.length > 0)
 				);
+				setIsLoading(false);
 			} catch (error) {
 				console.log(error.response);
 			}
 		};
-		fetchData();
+		
+		useEffect(() => {	fetchData();
 	}, []);
 
 	// console.log("data",data);
@@ -40,7 +41,7 @@ function App() {
 				</div>
 			</header>
 			<main>
-				<Restaurant data={data} categoriesList={categoriesList} />
+				<Restaurant data={data} categoriesList={categoriesList} cart={cart} setCart={setCart}/>
 			</main>
 		</>
 	);
