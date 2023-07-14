@@ -8,6 +8,8 @@ function App() {
 	const [data, setData] = useState();
 	const [isLoading, setIsLoading] = useState(true);
 	const [categoriesList, setCategoriesList] = useState([]);
+	const [totalFacture, setTotalFacture]=useState(0);
+
 
 	
 		const fetchData = async () => {
@@ -17,19 +19,17 @@ function App() {
 				);
 				setData(response.data);
 				setCategoriesList(
-					data.categories.filter((cat) => cat.meals.length > 0)
+					response.data.categories.filter((cat) => cat.meals.length > 0)
 				);
 				setIsLoading(false);
 			} catch (error) {
-				console.log(error.response);
+				console.log("catch>>", error);
 			}
 		};
-		
+
 		useEffect(() => {	fetchData();
 	}, []);
 
-	// console.log("data",data);
-	// console.log("cat", data.categories)
 
 	return isLoading ? (
 		<span>En cours de chargement... </span>
@@ -41,7 +41,7 @@ function App() {
 				</div>
 			</header>
 			<main>
-				<Restaurant data={data} categoriesList={categoriesList} cart={cart} setCart={setCart}/>
+				<Restaurant data={data} categoriesList={categoriesList} cart={cart} setCart={setCart} totalFacture={totalFacture} setTotalFacture={setTotalFacture} />
 			</main>
 		</>
 	);

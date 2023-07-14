@@ -1,17 +1,28 @@
 const Meal = (props) => {
-	const { element, cart, setCart } = props;
+	const { element, cart, setCart, totalFacture, setTotalFacture } = props;
 
 	const addMeal = () => {
 		const newCart = [...cart];
-		let obj = {};
-		obj.name = element.title;
-		obj.quantity = 1;
-		obj.price = element.price;
-		console.log("test", obj);
-		newCart.push(obj);
-		setCart(newCart);
+		const index = newCart.findIndex((obj) => obj.name === element.title);
+		if (index === -1) {
+			console.log("test", totalFacture);
+			const obj = {};
+			obj.name = element.title;
+			obj.quantity = 1;
+			obj.price = element.price;
+			newCart.push(obj);
+			setCart(newCart);
+			let newTotal = parseFloat(totalFacture) + parseFloat(element.price);
+			setTotalFacture(newTotal);
+
+			console.log("test2", totalFacture);
+		} else {
+			newCart[index].quantity = newCart[index].quantity + 1;
+			setCart(newCart);
+			let newTotal = parseFloat(totalFacture) + parseFloat(element.price);
+			setTotalFacture(newTotal);
+		}
 	};
-	console.log("cart", cart);
 
 	return (
 		<div className="meal" onClick={addMeal}>

@@ -3,7 +3,7 @@ import Cart from "./Cart";
 
 
 const Restaurant = (props) => {
-	const { cart, setCart, data, categoriesList } = props;
+	const { cart, setCart, data, categoriesList, totalFacture, setTotalFacture} = props;
 
 	return (
 		<>
@@ -22,10 +22,11 @@ const Restaurant = (props) => {
 				<div className="menu">
 					{categoriesList.map((element) => {
 						const id = element.name;
-						return <Category element={element} key={id} cart={cart} setCart={setCart}/>;
+						return <Category element={element} key={id} cart={cart} setCart={setCart} totalFacture={totalFacture} setTotalFacture={setTotalFacture} />;
 					})}
 				</div>
-				<Cart cart={cart} setCart={setCart}/>
+				<div className="sticky">
+				<Cart cart={cart} setCart={setCart} totalFacture={totalFacture} setTotalFacture={setTotalFacture}/></div>
 			</div>
 		</>
 	);
