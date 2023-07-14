@@ -1,5 +1,5 @@
 const Meal = (props) => {
-	const { element, cart, setCart, totalFacture, setTotalFacture } = props;
+	const { element, cart, setCart, totalFacture, setTotalFacture, isDisplayed, setIsDisplayed } = props;
 
 	const addMeal = () => {
 		const newCart = [...cart];

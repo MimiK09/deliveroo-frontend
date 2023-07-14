@@ -223,7 +223,9 @@ header .container img {
 /****************/
 /** Cart **/
 /****************/
-
+.cart-mobile {
+	display: none;
+}
 .cart {
 	position: sticky;
 	display: flex;
@@ -369,7 +371,7 @@ header .container img {
 	}
 }
 
-@media (max-width: 889px) {
+@media (max-width: 749px) {
 	#root {
 		background-color: #e7a2fc;
 	}
@@ -438,11 +440,72 @@ header .container img {
 		max-width: 50%;
 		flex: 1 1;
 	}
-	.meal-detail{
-		max-height : 60px;
+	.meal-detail {
+		max-height: 60px;
 	}
-	
+
 	.cart {
 		display: none;
+	}
+
+	.cart-mobile {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		background-color: rgb(255, 255, 255);
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border: 1px solid rgb(138, 138, 138);
+		border-radius: 5px;
+	}
+	.displayed {
+		display: flex;
+	}
+
+	.notDisplayed {
+		display: none;
+	}
+	.cart-modale {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.cart-modale p {
+		font-size: 0.9rem;
+	}
+
+	.cart-modale .total {
+		font-size: 1.2rem;
+	}
+
+	.cart-modale > :not(:first-child) {
+		border-bottom: 1px solid grey;
+	}
+
+	.close-modale {
+		position: absolute;
+		padding: 10px;
+		top: 5px;
+		right: 5px;
+		border-radius: 10px;
+		background-color: black;
+		color: white;
+	}
+	.open-modale {
+		background: pink;
+		border: none;
+		border-radius: 5px;
+		color: #fff;
+		font-size: 1rem;
+		font-weight: 700;
+		padding: 10px 30px;
+		margin: 10px auto;
+	}
+
+	.cart-modale-closed {
+		display: flex;
+		justify-content: space-evenly;
 	}
 }
